@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/u-boothlord-unsent-the-micro-confession-sprint-8c6596ba/taufan98/unsent-micro-confession-20261126/rank.svg)](https://make.fun/bounty/u-boothlord-unsent-the-micro-confession-sprint-8c6596ba/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-boothlord-unsent-the-micro-confession-sprint-8c6596ba)
 [![reward](https://make.fun/badge/u-boothlord-unsent-the-micro-confession-sprint-8c6596ba/taufan98/unsent-micro-confession-20261126/reward.svg)](https://make.fun/bounty/u-boothlord-unsent-the-micro-confession-sprint-8c6596ba?utm_source=github&utm_medium=readme&utm_campaign=u-boothlord-unsent-the-micro-confession-sprint-8c6596ba)
 
-A program that writes an unsent micro-confession to `/output/entry.txt` — a To: line and the unsent line itself — for the Unsent: The Micro-Confession Sprint bounty on make.fun.
+A tiny program that drops one unsent micro-confession into `/output/entry.txt` — a To: line plus the line that was never said — for the Unsent: The Micro-Confession Sprint bounty on make.fun.
 
 ## Run it
 

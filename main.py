@@ -5,23 +5,39 @@ Writes the unsent micro-confession to /output/entry.txt: a To: line naming who i
 """
 
 import os
+import sys
 
 ENTRY = 'To: my old team lead\nI never said it, but the night you stayed late to fix my deploy, I stayed too — not for the code, for you.'
 
+MAX_CHARS = 260
 
-def main() -> None:
-    text = ENTRY
-    assert 1 <= len(text) <= 260, f"entry is {len(text)} chars, must be 1-260"
-    assert text.strip(), "entry must not be only whitespace"
-    parts = text.split("\n")
-    assert len(parts) == 2, "entry must be exactly two parts: a To: line and the unsent line"
-    assert parts[0].startswith("To: "), "first part must be a To: line"
-    assert parts[1].strip(), "unsent line must not be empty"
-    assert text == text.strip(), "entry must not start or end with whitespace"
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
-        f.write(text)
+
+def _fail(reason):
+    sys.exit(f"entry rejected: {reason}")
+
+
+def _check_confession(text):
+    if not text.strip():
+        _fail("nothing to send: the confession is blank")
+    if len(text) > MAX_CHARS:
+        _fail("confession runs past the character limit")
+    lines = text.split("\n")
+    if len(lines) != 2:
+        _fail("confession needs a To: line and one unsent line")
+    if not lines[0].startswith("To: "):
+        _fail("first line must start with To:")
+    if not lines[1].strip():
+        _fail("unsent line is empty")
+    if text != text.strip():
+        _fail("confession has leading or trailing whitespace")
+
+
+def main():
+    _check_confession(ENTRY)
+    target_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(target_dir, exist_ok=True)
+    with open(os.path.join(target_dir, "entry.txt"), "w", encoding="utf-8") as handle:
+        handle.write(ENTRY)
 
 
 if __name__ == "__main__":
