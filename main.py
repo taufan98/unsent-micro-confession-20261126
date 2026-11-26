@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unsent: The Micro-Confession Sprint — make.fun bounty entry.
 
-Writes the unsent micro-confession to /output/entry.txt: a To: line naming who it was meant for, and the unsent line itself, exactly as typed. Specific, honest, and it stayed in drafts because it was never said out loud.
+Writes the unsent micro-confession to /output/entry.txt: a To: line naming who it was meant for, and the unsent line itself, exactly as typed. Specific, honest, and it stayed unsent because it was never spoken aloud.
 """
 
 import os
